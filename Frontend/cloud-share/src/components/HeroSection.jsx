@@ -1,6 +1,6 @@
 import React from "react";
 import { assets } from "../assets/assests";
-function HeroSection() {
+function HeroSection({openSignIn , openSignUp}) {
   return (
     <div className="landing-page-content relative">
       {/* Background gradient */}
@@ -21,11 +21,15 @@ function HeroSection() {
 
             <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center sm:items-center">
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center items-center">
-                <button className="flex items-center px-6 py-3 border border-transparent text-white font-medium rounded-md bg-purple-500 hover:bg-purple-600 md:py-4 md:text-lg md:px-10 transition-all duration-200 shadow-lg hover:shadow-xl">
+                <button 
+                onClick={() => openSignUp()}
+                className="flex items-center px-6 py-3 border border-transparent text-white font-medium rounded-md bg-purple-500 hover:bg-purple-600 md:py-4 md:text-lg md:px-10 transition-all duration-200 shadow-lg hover:shadow-xl">
                   Get started
                 </button>
 
-                <button className="flex items-center px-6 py-3 border border-transparent text-purple-600 font-medium rounded-md bg-white hover:bg-purple-500 hover:text-white md:py-4 md:text-lg md:px-10 transition-all duration-200 shadow-lg hover:shadow-xl">
+                <button 
+                onClick={()=> openSignIn()}
+                className="flex items-center px-6 py-3 border border-transparent text-purple-600 font-medium rounded-md bg-white hover:bg-purple-500 hover:text-white md:py-4 md:text-lg md:px-10 transition-all duration-200 shadow-lg hover:shadow-xl">
                   Sign In
                 </button>
               </div>

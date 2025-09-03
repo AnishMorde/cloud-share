@@ -8,6 +8,7 @@ import MyFiles from './Pages/MyFiles';
 import Subscription from './Pages/Subscription';
 import Transaction from './Pages/Transaction';
 import Landing from './Pages/Landing';
+import { RedirectToSignIn, SignedOut, SignedIn } from '@clerk/clerk-react';
 
 function App() {
 
@@ -16,11 +17,41 @@ function App() {
   <BrowserRouter>
   <Routes>
     <Route  path='/' element={<Landing/>}/>
-    <Route  path='/dashboard' element={<DashBoard/>}/>
-    <Route  path='/upload' element={<Upload/>}/>
-    <Route  path='/my-files' element={<MyFiles/>}/>
-    <Route  path='/subscription' element={<Subscription/>}/>
-    <Route  path='/transaction' element={<Transaction/>}/>
+    <Route  path='/dashboard' element={
+
+      <>
+       <SignedIn><DashBoard/></SignedIn>
+        <SignedOut><RedirectToSignIn/></SignedOut>
+      </>
+     
+     
+    }/>
+    <Route  path='/upload' element={
+      <>
+       <SignedIn><Upload/></SignedIn>
+        <SignedOut><RedirectToSignIn/></SignedOut>
+      </>
+    }/>
+    <Route  path='/my-files' element={
+      <>
+       <SignedIn><MyFiles/></SignedIn>
+        <SignedOut><RedirectToSignIn/></SignedOut>
+      </>
+    }/>
+    <Route  path='/subscription' element={
+      <>
+       <SignedIn><Subscription/></SignedIn>
+        <SignedOut><RedirectToSignIn/></SignedOut>
+      </>
+    }/>
+    <Route  path='/transaction' element={
+      <>
+       <SignedIn><Subscription/></SignedIn>
+        <SignedOut><RedirectToSignIn/></SignedOut>
+      </>
+    }/>
+
+    <Route path='/' element={<RedirectToSignIn/>} />
   </Routes>
   </BrowserRouter>
   ) 
